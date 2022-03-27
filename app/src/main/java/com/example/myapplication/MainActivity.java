@@ -1,31 +1,52 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText n1;
-    private EditText n2;
-    private TextView result;
+    private EditText usuario, contra;
+    private ListView lv1;
+
+    private String nombres [] = {};
+    private String edades [] = {};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        n1 = (EditText) findViewById(R.id.numero1);
-        n2 = (EditText) findViewById(R.id.numero2);
-        result = (TextView) findViewById(R.id.Resultado);
+        usuario = (EditText) findViewById(R.id.nombre);
+        contra = (EditText) findViewById(R.id.contra);
     }
 
-    public void sumar(View view){
-        String val1 = n1.getText().toString();
-        String val2 = n2.getText().toString();
+    public void log(View view){
+        Intent toLV = new Intent(this, ActivityLV.class);
+        String us = usuario.getText().toString();
+        String con = contra.getText().toString();
+        /*if(us == 'admin'){
+            if (con == 'admin') {
+                startActivity(toLV);
+            } else{
+                Toast.makeText(this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                contra.setText("");
+            }
+        } else {
+            Toast.makeText(this, "Este usuario no existe", Toast.LENGTH_SHORT).show();
+            contra.setText("");
+            usuario.setText("");
+        }*/
+        startActivity(toLV);
 
-        int num1;
+
+
     }
+
 }

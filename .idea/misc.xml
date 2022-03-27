@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gorka/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_lv.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/gorka/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/gorka/AndroidStudioProjects/MyApplication/app/src/main/res/layout/list_item_gorka.xml" value="0.1" />
       </map>
     </option>
   </component>
