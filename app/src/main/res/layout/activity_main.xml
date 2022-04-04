@@ -16,10 +16,10 @@
         android:hint="@string/contraseña"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/desc" />
 
     <EditText
-        android:id="@+id/nombre"
+        android:id="@+id/desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -37,6 +37,18 @@
         android:layout_marginTop="48dp"
         android:onClick="log"
         android:text="@string/log"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recordar" />
+
+    <CheckBox
+        android:id="@+id/recordar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="44dp"
+        android:buttonTint="#DF1616"
+        android:checked="false"
+        android:text="@string/recordar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contra" />
 </androidx.constraintlayout.widget.ConstraintLayout>
