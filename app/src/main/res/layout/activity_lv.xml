@@ -27,14 +27,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
     <Button
-        android:id="@+id/añadir"
+        android:id="@+id/toTareas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="96dp"
         android:onClick="reg"
+        android:text="@string/tareas"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv1"
-        tools:text="@string/tareas" />
+        app:layout_constraintTop_toBottomOf="@+id/lv1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
