@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Mis Tareas</string>
     <string name="tv1">Lista de tareas:</string>
     <string name="tareas">Añadir o editar tareas</string>
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
     <string name="log">Acceder</string>
+    <string name="reg">Registrarse</string>
     <string name="recordar">Recordar este usuario</string>
 
     <string name="sumar">Añadir tarea</string>
@@ -15,4 +16,8 @@
     <string name="id">Identificador de la tarea</string>
     <string name="nombre">Nombre de la tarea</string>
     <string name="desc">Descripción de la tarea</string>
+
+    <string name="nr">Nombre de usuario</string>
+    <string name="cr">Contraseña</string>
+    <string name="crr">Repite la contraseña</string>
 </resources>

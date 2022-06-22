@@ -1,13 +1,17 @@
 package com.example.myapplication;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.SQLData;
@@ -16,6 +20,8 @@ public class Tareas extends AppCompatActivity {
 
     private TextView idTV, nombreTV, descTV;
     //private Button btA, btEdit, btElim;
+    private String propietario;
+    private int id;
 
 
     @Override
@@ -27,10 +33,17 @@ public class Tareas extends AppCompatActivity {
         nombreTV = (TextView) findViewById(R.id.nom);
         descTV = (TextView) findViewById(R.id.desc);
 
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            this.propietario = extras.getString("usuario");
+        }
+
+
     }
 
     public void Registrar(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 2);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         String id = idTV.getText().toString();
@@ -42,6 +55,7 @@ public class Tareas extends AppCompatActivity {
             registro.put("codigo", id);
             registro.put("nombre", nombre);
             registro.put("descripcion", desc);
+            registro.put("propietario", propietario);
             db.insert("tarea", null, registro);
             db.close();
             idTV.setText("");
@@ -54,7 +68,7 @@ public class Tareas extends AppCompatActivity {
     }
 
     public void Buscar(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 2);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         String id = idTV.getText().toString();
@@ -76,30 +90,54 @@ public class Tareas extends AppCompatActivity {
     }
 
     public void Eliminar(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
-        SQLiteDatabase db = admin.getWritableDatabase();
 
-        String id = idTV.getText().toString();
 
-        if(!id.isEmpty()){
-            int cantidad = db.delete("tarea", "codigo ="+id, null);
-            db.close();
-            idTV.setText("");
-            nombreTV.setText("");
-            descTV.setText("");
+        String idSTR = idTV.getText().toString();
 
-            if(cantidad == 1){
-                Toast.makeText(this, "Tarea eliminada correctamente", Toast.LENGTH_LONG).show();
-            }else
-                Toast.makeText(this, "La tarea no existe", Toast.LENGTH_LONG).show();
+        if(!idSTR.isEmpty()){
+            Log.d("id", "es"+id);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Estás seguro de que deseas eliminar esta tarea?")
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Elm();
+                        }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+            builder.show();
+
         }else {
             Toast.makeText(this, "Revisa haber introducido el identificador", Toast.LENGTH_LONG).show();
-            db.close();
+
+        }
+    }
+
+    public void Elm(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 2);
+        SQLiteDatabase db = admin.getWritableDatabase();
+
+        String idSTR = idTV.getText().toString();
+
+        int cantidad = db.delete("tarea", "codigo ="+idSTR, null);
+        Log.d("cantidad", "es"+cantidad);
+        db.close();
+        idTV.setText("");
+        nombreTV.setText("");
+        descTV.setText("");
+
+        if(cantidad == 1){
+            Log.d("objeto eliminado ", "si");
+        }else{
+            Log.d("objeto eliminado ", "no");
         }
     }
 
     public void Editar(View view){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 2);
         SQLiteDatabase db = admin.getWritableDatabase();
 
         String id = idTV.getText().toString();

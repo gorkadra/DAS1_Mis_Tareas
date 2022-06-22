@@ -9,25 +9,18 @@
         android:id="@+id/nombreTarea"
         android:textSize="20dp"
         android:textStyle="bold"/>
-    <LinearLayout
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/idTarea"
-            android:textSize="16dp"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/descTarea"
-            android:textSize="14dp"/>
-
-
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/idTarea"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/descTarea"
+        android:textSize="14dp"/>
 
 
 </LinearLayout>
